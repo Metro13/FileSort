@@ -1,6 +1,8 @@
 import os
 import shutil
 
+# Setting file type extensions dictionary
+
 audio = {".mp3", ".m4a"}
 video = {".mp4", ".mkv", ".webm", ".avi"}
 documents = {".docx", ".pdf", ".xls", ".txt"}
@@ -11,6 +13,8 @@ images = {".png", ".jpeg", "jpg"}
 design_files = {".psd", ".xd", ".ai", ".rp"}
 trash_files = {".php", ".js", ".cs"}
 
+
+# Functions that split the file name and extension
 
 def Is_Audio(files):
     return os.path.splitext(file)[1] in audio
@@ -48,7 +52,10 @@ def Is_TrashFiles(files):
     return os.path.splitext(file)[1] in trash_files
 
 
+# Code that changes the working directory to the directory that has the files that needs organizing 
 os.chdir("G:/backup")
+
+# Code that iterates into that directory and sort the files based on the extension
 
 for file in os.listdir():
     if Is_Audio(file):
