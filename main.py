@@ -11,45 +11,49 @@ apps = {".exe", ".msi"}
 studio_files = {".flp", ".wav", ".mid"}
 images = {".png", ".jpeg", "jpg"}
 design_files = {".psd", ".xd", ".ai", ".rp"}
-trash_files = {".php", ".js", ".cs"}
+programming_files = {".php", ".js", ".cs"}
 
 
 # Functions that split the file name and extension
 
 def Is_Audio(files):
-    return os.path.splitext(file)[1] in audio
+    return os.path.splitext(files)[1] in audio
 
 
 def Is_apps(files):
-    return os.path.splitext(file)[1] in apps
+    return os.path.splitext(files)[1] in apps
 
 
 def Is_Video(files):
-    return os.path.splitext(file)[1] in video
+    return os.path.splitext(files)[1] in video
 
 
 def Is_Document(files):
-    return os.path.splitext(file)[1] in documents
+    return os.path.splitext(files)[1] in documents
 
 
 def Is_ZipFiles(files):
-    return os.path.splitext(file)[1] in zip_files
+    return os.path.splitext(files)[1] in zip_files
 
 
 def Is_StudiosFiles(files):
-    return os.path.splitext(file)[1] in studio_files
+    return os.path.splitext(files)[1] in studio_files
 
 
 def Is_Images(files):
-    return os.path.splitext(file)[1] in images
+    return os.path.splitext(files)[1] in images
 
 
 def Is_DesignFiles(files):
-    return os.path.splitext(file)[1] in design_files
+    return os.path.splitext(files)[1] in design_files
+
+
+def Is_ProgrammingFiles(files):
+    return os.path.splitext(files)[1] in programming_files
 
 
 def Is_TrashFiles(files):
-    return os.path.splitext(file)[1] in trash_files
+    return os.path.splitext(files)
 
 
 # Code that changes the working directory to the directory that has the files that needs organizing 
@@ -72,7 +76,11 @@ for file in os.listdir():
         shutil.move(file, "G:/SortedFiles/Zip files")
     elif Is_apps(file):
         shutil.move(file, "G:/SortedFiles/Applications")
-    elif Is_TrashFiles(file):
-        shutil.move(file, "G:/SortedFiles/Trash")
     elif Is_StudiosFiles(file):
         shutil.move(file, "G:/SortedFiles/Studio")
+    elif Is_ProgrammingFiles(file):
+        shutil.move(file, "G:/SortedFiles/programmingFiles")
+    else:
+        shutil.move(Is_TrashFiles(file), "G:/SortedFiles/Trash")
+        
+    
